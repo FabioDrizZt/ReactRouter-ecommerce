@@ -2,12 +2,13 @@ import { Route, Routes } from "react-router";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Shop from "./pages/Shop";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Card from "./componentes/Card";
+import { useDatosProductos } from "./componentes/Context";
 
 function App() {
+  const { datos, setDatos } = useDatosProductos();
 
-  const [datos, setDatos] = useState();
   const url = "https://api.mercadolibre.com/sites/MLA/search?q=zapatillas";
 
   useEffect(() => {
@@ -23,16 +24,16 @@ function App() {
     fetchData();
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(datos);
-  },[datos])
+  }, [datos]);
 
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />}>
-          <Route path="/shop" element={<Shop datos={datos}/>}>
-            <Route path="/shop/:id" element={<Card datos={datos}/> }/>
+          <Route path="/shop" element={<Shop />}>
+            <Route path="/shop/:id" element={<Card />} />
           </Route>
           <Route path="/contacto" element={<Contact />} />
         </Route>

@@ -1,8 +1,10 @@
 import { Outlet } from "react-router";
 import { Link } from "react-router-dom";
+import { useDatosProductos } from "../componentes/Context";
 
-  // eslint-disable-next-line react/prop-types
-const Shop = ({datos}) => {
+// eslint-disable-next-line react/prop-types
+const Shop = () => {
+  const { datos } = useDatosProductos();
 
   return (
     <div style={styles.container}>
@@ -12,11 +14,11 @@ const Shop = ({datos}) => {
       </p>
       {/* Renderizar la lista de productos */}
       <Outlet />
-      {datos?.map(item => 
-        <Link key={item.id} to={'/shop/'+item.id}>
+      {datos?.map((item) => (
+        <Link key={item.id} to={"/shop/" + item.id}>
           <li>{item.title}</li>
         </Link>
-      )}
+      ))}
     </div>
   );
 };
