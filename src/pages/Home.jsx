@@ -22,15 +22,15 @@ export default Home;
 
 const styles = {
   container: {
-    textAlign: 'center',
-    marginTop: '50px',
+    textAlign: "center",
+    marginTop: "50px",
   },
   heading: {
-    fontSize: '28px',
-    fontWeight: 'bold',
-    marginBottom: '20px',
+    fontSize: "28px",
+    fontWeight: "bold",
+    marginBottom: "20px",
   },
   description: {
-    fontSize: '16px',
+    fontSize: "16px",
   },
 };

@@ -5,6 +5,8 @@ import Shop from "./pages/Shop";
 import { useEffect } from "react";
 import Card from "./componentes/Card";
 import { useDatosProductos } from "./componentes/Context";
+import Auth from "./Auth/Auth";
+import Login from "./pages/Login";
 
 function App() {
   const { datos, setDatos } = useDatosProductos();
@@ -31,7 +33,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />}>
+        <Route path="/" element={Auth() ? <Home /> : <Login/>}>
           <Route path="/shop" element={<Shop />}>
             <Route path="/shop/:id" element={<Card />} />
           </Route>
